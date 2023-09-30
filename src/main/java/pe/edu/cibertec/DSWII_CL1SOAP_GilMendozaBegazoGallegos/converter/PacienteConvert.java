@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class PacienteConvert {
-    public Paciente convertDomicilioWsToDomicilio(Pacientews pacientews) {
+    public Paciente convertPacienteWsToPaciente(Pacientews pacientews) {
         Paciente paciente = new Paciente();
         paciente.setIdpaciente(pacientews.getIdpaciente());
         paciente.setNompaciente(pacientews.getNompaciente());
@@ -20,7 +20,7 @@ public class PacienteConvert {
         return paciente;
     }
 
-    public Pacientews convertDomicilioToDomicilioWs(Paciente paciente) {
+    public Pacientews convertPacienteToPacienteWs(Paciente paciente) {
         Pacientews pacientews = new Pacientews();
         pacientews.setIdpaciente(paciente.getIdpaciente());
         pacientews.setNompaciente(paciente.getNompaciente());
@@ -31,21 +31,21 @@ public class PacienteConvert {
         return pacientews;
     }
 
-    public List<Paciente> convertDomicilioWsToDomicilio(
+    public List<Paciente> convertPacienteWsToPaciente(
             List<Pacientews> pacientewsList){
         List<Paciente> pacienteList = new ArrayList<>();
         for (Pacientews pacientews:
                 pacientewsList) {
-            pacienteList.add(convertDomicilioWsToDomicilio(pacientews));
+            pacienteList.add(convertPacienteWsToPaciente(pacientews));
         }
         return pacienteList;
     }
-    public List<Pacientews> convertDomicilioToDomicilioWs(
+    public List<Pacientews> convertPacienteToPacienteWs(
             List<Paciente> pacienteList){
         List<Pacientews> pacientewsList = new ArrayList<>();
         for (Paciente paciente:
                 pacienteList) {
-            pacientewsList.add(convertDomicilioToDomicilioWs(paciente));
+            pacientewsList.add(convertPacienteToPacienteWs(paciente));
         }
         return pacientewsList;
     }
