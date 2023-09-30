@@ -27,7 +27,26 @@ public class PacieneteService {
     }
 
     public Paciente guardarPaciente(Paciente paciente){
+
         return pacienteRepository.save(paciente);
+    }
+
+    public Paciente actualizarPaciente(Integer id, Paciente pacienteActualizado) {
+        Optional<Paciente> pacienteExistente = pacienteRepository.findById(id);
+
+        if (pacienteExistente.isPresent()) {
+            Paciente paciente = pacienteExistente.get();
+
+            paciente.setNompaciente(pacienteActualizado.getNompaciente());
+            paciente.setApepaciente(pacienteActualizado.getApepaciente());
+            paciente.setDocpaciente(pacienteActualizado.getDocpaciente());
+            paciente.setFechanacpaciente(pacienteActualizado.getFechanacpaciente());
+            paciente.setEmailpaciente(pacienteActualizado.getEmailpaciente());
+
+            return pacienteRepository.save(paciente);
+        } else {
+            return null;
+        }
     }
 
 
